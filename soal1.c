@@ -35,7 +35,10 @@ int main(){
     int max_vertex_index = 0;
     int max_vertex_degree = 0;
 
-    int isolated_index = -5;
+    int isolated[n];
+    int isolated_count = 0;
+
+
 
     for(int i = 0; i < n; i++){
         degree = 0;
@@ -52,7 +55,8 @@ int main(){
         }
 
         if(degree == 0){
-            isolated_index = i;
+            isolated[isolated_count] = i;
+            isolated_count++;
         }
 
         printf("DEGREE %d %d\n", i, degree);
@@ -60,10 +64,14 @@ int main(){
 
     printf("MAX_VERTEX %d\n", max_vertex_index);
 
-    if(isolated_index >= 0){
-        printf("ISOLATED %d", isolated_index);
-    } else{
+
+    if(isolated_count == 0){
         printf("ISOLATED NONE");
+    } else{
+        printf("ISOLATED");
+        for(int i = 0; i < isolated_count; i++){
+            printf(" %d", isolated[i]);
+        }
     }
 
 }
